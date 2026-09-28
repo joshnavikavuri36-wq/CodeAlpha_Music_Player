@@ -1,0 +1,754 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   VARIABLES
+========================================= */
+
+:root {
+
+    --page-bg: #eef2ff;
+
+    --calculator-bg: #ffffff;
+
+    --display-bg: #f5f7fb;
+
+    --button-bg: #f1f3f8;
+
+    --button-hover: #e3e7f0;
+
+    --function-bg: #dfe4ef;
+
+    --text: #172033;
+
+    --secondary-text: #687083;
+
+    --operator: #6366f1;
+
+    --operator-hover: #4f46e5;
+
+    --equal: #10b981;
+
+    --equal-hover: #059669;
+
+    --history-bg: #f7f8fc;
+
+    --history-hover: #e9ecf5;
+
+    --border: #e4e7ee;
+
+    --shadow:
+        0 25px 60px rgba(30, 41, 59, 0.15);
+}
+
+
+/* =========================================
+   DARK THEME
+========================================= */
+
+body.dark {
+
+    --page-bg: #0f172a;
+
+    --calculator-bg: #1e293b;
+
+    --display-bg: #111827;
+
+    --button-bg: #334155;
+
+    --button-hover: #475569;
+
+    --function-bg: #475569;
+
+    --text: #f8fafc;
+
+    --secondary-text: #94a3b8;
+
+    --history-bg: #172033;
+
+    --history-hover: #263449;
+
+    --border: #334155;
+
+    --shadow:
+        0 25px 60px rgba(0, 0, 0, 0.4);
+}
+
+
+/* =========================================
+   BODY
+========================================= */
+
+body {
+
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(99, 102, 241, 0.18),
+            transparent 35%
+        ),
+        var(--page-bg);
+
+    color: var(--text);
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.page {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+}
+
+
+/* =========================================
+   CALCULATOR
+========================================= */
+
+.calculator {
+
+    width: 100%;
+
+    max-width: 410px;
+
+    padding: 24px;
+
+    border-radius: 25px;
+
+    background: var(--calculator-bg);
+
+    box-shadow: var(--shadow);
+
+    animation: calculatorIn 0.5s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.calculator-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+
+.calculator-header h1 {
+
+    font-size: 28px;
+
+    margin-bottom: 5px;
+}
+
+
+.calculator-header p {
+
+    font-size: 13px;
+
+    color: var(--secondary-text);
+}
+
+
+/* =========================================
+   THEME BUTTON
+========================================= */
+
+.theme-button {
+
+    width: 42px;
+
+    height: 42px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: var(--button-bg);
+
+    color: var(--text);
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+.theme-button:hover {
+
+    transform: rotate(20deg) scale(1.05);
+
+    background: var(--button-hover);
+}
+
+
+/* =========================================
+   DISPLAY
+========================================= */
+
+.display-box {
+
+    min-height: 120px;
+
+    padding: 18px;
+
+    margin-bottom: 18px;
+
+    border-radius: 18px;
+
+    background: var(--display-bg);
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    align-items: flex-end;
+
+    overflow: hidden;
+}
+
+
+.expression {
+
+    width: 100%;
+
+    min-height: 25px;
+
+    color: var(--secondary-text);
+
+    font-size: 15px;
+
+    text-align: right;
+
+    overflow-x: auto;
+}
+
+
+.display {
+
+    width: 100%;
+
+    margin-top: 5px;
+
+    font-size: clamp(
+        34px,
+        9vw,
+        48px
+    );
+
+    font-weight: bold;
+
+    text-align: right;
+
+    white-space: nowrap;
+
+    overflow-x: auto;
+}
+
+
+/* =========================================
+   BUTTON GRID
+========================================= */
+
+.buttons {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 11px;
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.button {
+
+    min-height: 63px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background: var(--button-bg);
+
+    color: var(--text);
+
+    font-size: 21px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.12s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.button:hover {
+
+    background: var(--button-hover);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 7px 14px
+        rgba(15, 23, 42, 0.1);
+}
+
+
+.button:active {
+
+    transform: scale(0.93);
+}
+
+
+/* =========================================
+   FUNCTION
+========================================= */
+
+.function {
+
+    background: var(--function-bg);
+}
+
+
+/* =========================================
+   OPERATOR
+========================================= */
+
+.operator {
+
+    background: var(--operator);
+
+    color: white;
+}
+
+
+.operator:hover {
+
+    background: var(--operator-hover);
+}
+
+
+/* =========================================
+   EQUAL
+========================================= */
+
+.equals {
+
+    background: var(--equal);
+
+    color: white;
+}
+
+
+.equals:hover {
+
+    background: var(--equal-hover);
+}
+
+
+/* =========================================
+   ZERO
+========================================= */
+
+.zero {
+
+    grid-column: span 2;
+}
+
+
+/* =========================================
+   HISTORY SECTION
+========================================= */
+
+.history-section {
+
+    margin-top: 22px;
+
+    border-top:
+        1px solid var(--border);
+
+    padding-top: 18px;
+}
+
+
+/* =========================================
+   HISTORY HEADER
+========================================= */
+
+.history-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 12px;
+}
+
+
+.history-header h2 {
+
+    font-size: 16px;
+}
+
+
+/* =========================================
+   CLEAR HISTORY
+========================================= */
+
+.clear-history {
+
+    border: none;
+
+    background: transparent;
+
+    color: #ef4444;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    padding: 5px 8px;
+
+    border-radius: 6px;
+}
+
+
+.clear-history:hover {
+
+    background: rgba(239, 68, 68, 0.1);
+}
+
+
+/* =========================================
+   HISTORY LIST
+========================================= */
+
+.history-list {
+
+    max-height: 210px;
+
+    overflow-y: auto;
+
+    padding-right: 4px;
+}
+
+
+/* =========================================
+   HISTORY ITEM
+========================================= */
+
+.history-item {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 12px 14px;
+
+    margin-bottom: 8px;
+
+    border-radius: 12px;
+
+    background: var(--history-bg);
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.history-item:hover {
+
+    background: var(--history-hover);
+
+    transform: translateX(3px);
+}
+
+
+.history-expression {
+
+    color: var(--secondary-text);
+
+    font-size: 13px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+.history-result {
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   EMPTY HISTORY
+========================================= */
+
+.empty-history {
+
+    padding: 18px;
+
+    text-align: center;
+
+    color: var(--secondary-text);
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   DELETE HISTORY ITEM
+========================================= */
+
+.delete-history {
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--secondary-text);
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    padding: 3px;
+}
+
+
+.delete-history:hover {
+
+    color: #ef4444;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.calculator-footer {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-top: 17px;
+
+    color: var(--secondary-text);
+
+    font-size: 10px;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   SCROLLBAR
+========================================= */
+
+.history-list::-webkit-scrollbar {
+
+    width: 5px;
+}
+
+
+.history-list::-webkit-scrollbar-thumb {
+
+    background: #aab2c5;
+
+    border-radius: 10px;
+}
+
+
+/* =========================================
+   ANIMATION
+========================================= */
+
+@keyframes calculatorIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(30px)
+            scale(0.96);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 430px) {
+
+    .page {
+
+        padding: 10px;
+    }
+
+
+    .calculator {
+
+        padding: 17px;
+
+        border-radius: 20px;
+    }
+
+
+    .calculator-header h1 {
+
+        font-size: 24px;
+    }
+
+
+    .buttons {
+
+        gap: 8px;
+    }
+
+
+    .button {
+
+        min-height: 57px;
+
+        font-size: 19px;
+
+        border-radius: 13px;
+    }
+
+
+    .display-box {
+
+        min-height: 110px;
+
+        padding: 15px;
+    }
+
+
+    .calculator-footer {
+
+        flex-direction: column;
+
+        gap: 5px;
+    }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 330px) {
+
+    .calculator {
+
+        padding: 13px;
+    }
+
+
+    .button {
+
+        min-height: 52px;
+
+        font-size: 17px;
+    }
+
+
+    .display {
+
+        font-size: 30px;
+    }
+}
+
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    * {
+
+        animation: none !important;
+
+        transition: none !important;
+    }
+}

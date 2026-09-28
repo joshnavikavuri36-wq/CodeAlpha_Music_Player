@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Fast responsive calculator with calculation history">
+
+    <title>Smart Calculator</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="page">
+
+        <section class="calculator">
+
+            <!-- HEADER -->
+            <header class="calculator-header">
+
+                <div>
+                    <h1>Calculator</h1>
+                    <p>Fast • Simple • Responsive</p>
+                </div>
+
+                <button
+                    id="themeButton"
+                    class="theme-button"
+                    aria-label="Toggle theme">
+                    ☀
+                </button>
+
+            </header>
+
+
+            <!-- DISPLAY -->
+            <div class="display-box">
+
+                <div
+                    id="expression"
+                    class="expression">
+                </div>
+
+                <output
+                    id="display"
+                    class="display">
+                    0
+                </output>
+
+            </div>
+
+
+            <!-- BUTTONS -->
+            <div class="buttons">
+
+                <button
+                    class="button function"
+                    data-action="clear">
+                    AC
+                </button>
+
+                <button
+                    class="button function"
+                    data-action="backspace">
+                    ⌫
+                </button>
+
+                <button
+                    class="button function"
+                    data-action="percent">
+                    %
+                </button>
+
+                <button
+                    class="button operator"
+                    data-value="/">
+                    ÷
+                </button>
+
+
+                <button
+                    class="button"
+                    data-value="7">
+                    7
+                </button>
+
+                <button
+                    class="button"
+                    data-value="8">
+                    8
+                </button>
+
+                <button
+                    class="button"
+                    data-value="9">
+                    9
+                </button>
+
+                <button
+                    class="button operator"
+                    data-value="*">
+                    ×
+                </button>
+
+
+                <button
+                    class="button"
+                    data-value="4">
+                    4
+                </button>
+
+                <button
+                    class="button"
+                    data-value="5">
+                    5
+                </button>
+
+                <button
+                    class="button"
+                    data-value="6">
+                    6
+                </button>
+
+                <button
+                    class="button operator"
+                    data-value="-">
+                    −
+                </button>
+
+
+                <button
+                    class="button"
+                    data-value="1">
+                    1
+                </button>
+
+                <button
+                    class="button"
+                    data-value="2">
+                    2
+                </button>
+
+                <button
+                    class="button"
+                    data-value="3">
+                    3
+                </button>
+
+                <button
+                    class="button operator"
+                    data-value="+">
+                    +
+                </button>
+
+
+                <button
+                    class="button zero"
+                    data-value="0">
+                    0
+                </button>
+
+                <button
+                    class="button"
+                    data-action="decimal">
+                    .
+                </button>
+
+                <button
+                    class="button equals"
+                    data-action="calculate">
+                    =
+                </button>
+
+            </div>
+
+
+            <!-- HISTORY -->
+            <section class="history-section">
+
+                <div class="history-header">
+
+                    <h2>Calculation History</h2>
+
+                    <button
+                        id="clearHistory"
+                        class="clear-history">
+                        Clear
+                    </button>
+
+                </div>
+
+                <div
+                    id="historyList"
+                    class="history-list">
+
+                    <p class="empty-history">
+                        No calculations yet
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+            <div class="calculator-footer">
+
+                <span>⌨ Keyboard supported</span>
+
+                <span>Click a history item to reuse it</span>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+
